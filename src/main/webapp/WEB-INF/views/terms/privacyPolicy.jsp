@@ -8,7 +8,7 @@
 
 <style type="text/css">
 .policy-floating-button{
-	background-color:rgb(255,83,63);
+	background-color:black;
 	margin:-5px;
 	color:white;
 	border:0;
@@ -52,7 +52,7 @@ function downFunction(){
 
 <div class="floating">
 <button onclick="topFunction()" class="policy-floating-button" id="scrollTop">▲</button><br>
-<a href="../layout/footer"><button class="policy-floating-button">메인</button></a><br>
+<a href="../main/main"><button class="policy-floating-button">메인</button></a><br>
 <button onclick="downFunction()" class="policy-floating-button" id="scrollDown">▼</button>
 </div>
 

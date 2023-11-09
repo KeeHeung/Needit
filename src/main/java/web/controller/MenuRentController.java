@@ -1,5 +1,9 @@
 package web.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import web.dto.Board;
 import web.service.face.MenuRentService;
 import web.util.Paging;
 
@@ -20,21 +25,37 @@ public class MenuRentController {
 	@Autowired private MenuRentService menuRentService;
 	
 	//게시판 목록 띄우기
-	@GetMapping("/product/list")
+	@GetMapping("/list")
 	public String list( Paging param, Model model ) {
+		logger.info("param : {}", param.getMenu());
 		
 		//페이징 계산
 		Paging paging = menuRentService.getPaging(param);
 		
 		//게시글 목록 조회
-		menuRentService.list(param);
+		List<Board> list = menuRentService.list(paging); 
+		
+		model.addAttribute("paging", paging);
+		model.addAttribute("list", list);
 		
 		return "/menu/rent/list";
 	}
-
+	
 	//게시판 상세 조회
 	@RequestMapping("/view")
-	public void view() {}
+	public String view( Board board, Model model, HttpSession session ) {
+		
+		//게시글 번호를 전달받지 못하면 목록으로 이동
+		if( board.getBoardNo() < 1 ) {
+			return "redirect:/menu/rent/list";
+		}
+		
+		//게시글 상세 조회
+		board = menuRentService.view(board);
+		model.addAttribute("board", board);
+		
+		return "menu/rent/view";
+	}
 
 	//파일 다운로드
 	@RequestMapping("/download")
@@ -83,7 +104,5 @@ public class MenuRentController {
 	//게시글 신고
 	@PostMapping("/report")
 	public void report() {}
-	
-	//------------------------------------------------------------------------------------------
 	
 }

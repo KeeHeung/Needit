@@ -11,6 +11,9 @@
         	board_no, writer_id, write_date, hit, menu
         	, title, price, content, location
         FROM board
+        <where>
+        	menu = #{menu}
+        </where>
      </sql>
      
     <select id="selectCntAll" resultType="int" parameterType="web.util.Paging">
@@ -19,9 +22,59 @@
 	)
     </select>
     
-    <select id="selectShareList" resultType="Board" parameterType="Board">
-    	<include refid="selectBoard"/>
-    	WHERE menu = 'm1c1'
+    <select id="selectAll" resultType="Board" parameterType="web.util.Paging">
+    	SELECT * FROM (
+             SELECT rownum rnum, B.* FROM(
+                <include refid="selectBoard"/>
+                 ORDER BY board_no DESC
+          ) B
+          
+      ) WHERE rnum BETWEEN #{startNo} AND #{endNo} 
+    </select>
+    
+    <select id="selectByBoardNo" resultType="Board" parameterType="Board">
+    	SELECT * FROM board
+    	WHERE board_no = #{boardNo}
+    </select>
+    
+    <update id="updateHit" parameterType="int">
+    	UPDATE board
+    	SET hit = hit + 1
+    	<where>
+    		board_no = #{boardNo}
+    	</where>
+    
+    </update>
+    
+    <select id="selectByMenu" resultType="Board" parameterType="Board">
+    	SELECT menu FROM board
+    	<where>
+    		menu = #{menu}
+    	</where>
+    
+    </select>
+    
+    <insert id="insertBoard" parameterType="Board">
+    	<selectKey resultType="int" order="BEFORE" keyProperty="boardNo">
+    		SELECT board_seq.nextval FROM dual
+    	</selectKey>
+    	INSERT INTO board(board_no, menu, writer_id, writer_nick, title, price, content,location)
+    	VALUES ( #{boardNo}, #{menu}, #{writerId}, '두둠칫' , #{title}, #{price},#{content},'서울')
+    </insert>
+    
+    <insert id="insertFile" parameterType="FileTb">
+    	<selectKey resultType="int" order="BEFORE" keyProperty="fileNo">
+    		SELECT fileTb_seq.nextval FROM dual
+    	</selectKey>
+    	INSERT INTO fileTb( file_no, origin_name, stored_name, file_type, board_no)
+    	VALUES( #{fileNo}, #{originName}, #{storedName}, #{fileType}, #{boardNo})
+    </insert>
+    
+    <select id="selectFileImg" resultType="FileTb" parameterType="FileTb">
+    	SELECT stored_name FROM fileTb
+    	<where>
+    		board_no = #{boardNo}
+    	</where>
     </select>
 	
 </mapper>

@@ -9,22 +9,24 @@ public class Comment {
 	private String content;
 	private int boardNo;
 	private String writerId;
+	private String writerNick;
 
 	public Comment() {}
 
-	public Comment(int cmtNo, Date writeDate, String content, int boardNo, String writerId) {
+	public Comment(int cmtNo, Date writeDate, String content, int boardNo, String writerId, String writerNick) {
 		super();
 		this.cmtNo = cmtNo;
 		this.writeDate = writeDate;
 		this.content = content;
 		this.boardNo = boardNo;
 		this.writerId = writerId;
+		this.writerNick = writerNick;
 	}
 
 	@Override
 	public String toString() {
-		return "Comment [cmtNo=" + cmtNo + ", content=" + content + ", boardNo=" + boardNo + ", writerId=" + writerId
-				+ "]";
+		return "Comment [cmtNo=" + cmtNo + ", writeDate=" + writeDate + ", content=" + content + ", boardNo=" + boardNo
+				+ ", writerId=" + writerId + ", writerNick=" + writerNick + "]";
 	}
 
 	public int getCmtNo() {
@@ -65,6 +67,14 @@ public class Comment {
 
 	public void setWriterId(String writerId) {
 		this.writerId = writerId;
+	}
+
+	public String getWriterNick() {
+		return writerNick;
+	}
+
+	public void setWriterNick(String writerNick) {
+		this.writerNick = writerNick;
 	}
 	
 }

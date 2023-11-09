@@ -16,6 +16,7 @@ public class LogAspect {
 	private final Logger logger = LoggerFactory.getLogger( this.getClass() );
 	
 	@Autowired HttpServletRequest req;
+	
 	@Before("bean(*Controller)")
 	public void defaultControllerLog(JoinPoint jp) {
 		logger.info("{} [{}]", req.getRequestURI(), req.getMethod());

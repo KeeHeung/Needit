@@ -8,7 +8,10 @@
 
 <style type="text/css">
 
-
+#AdminChat{
+	background-color: #ff8108;
+	width: 302px;
+}
 
 .wrap {
     padding: 40px 0;

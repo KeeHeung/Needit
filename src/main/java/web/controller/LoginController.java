@@ -47,7 +47,7 @@ public class LoginController {
 		if(islogin) {
 			logger.info("로그인 성공 {}",user);
 			session.setAttribute("id", user.getId());
-			return"redirect:./main";
+			return"redirect:../main";
 		} else {
 			logger.info("로그인 실패");
 			return"redirect:./login";
@@ -58,7 +58,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		
-		return "redirect:./";
+		return "redirect:../";
 		
 	}
 }

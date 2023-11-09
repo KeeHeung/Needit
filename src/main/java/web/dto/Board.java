@@ -7,6 +7,7 @@ public class Board {
 	private int boardNo;
 	private String menu;
 	private String writerId;
+	private String writerNick;
 	private Date writeDate;
 	private int hit;
 	private String title;
@@ -16,12 +17,13 @@ public class Board {
 
 	public Board() {}
 
-	public Board(int boardNo, String menu, String writerId, Date writeDate, int hit, String title, int price,
-			String content, String location) {
+	public Board(int boardNo, String menu, String writerId, String writerNick, Date writeDate, int hit, String title,
+			int price, String content, String location) {
 		super();
 		this.boardNo = boardNo;
 		this.menu = menu;
 		this.writerId = writerId;
+		this.writerNick = writerNick;
 		this.writeDate = writeDate;
 		this.hit = hit;
 		this.title = title;
@@ -32,9 +34,9 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", menu=" + menu + ", writerId=" + writerId + ", writeDate=" + writeDate
-				+ ", hit=" + hit + ", title=" + title + ", price=" + price + ", content=" + content + ", location="
-				+ location + "]";
+		return "Board [boardNo=" + boardNo + ", menu=" + menu + ", writerId=" + writerId + ", writerNick=" + writerNick
+				+ ", writeDate=" + writeDate + ", hit=" + hit + ", title=" + title + ", price=" + price + ", content="
+				+ content + ", location=" + location + "]";
 	}
 
 	public int getBoardNo() {
@@ -59,6 +61,14 @@ public class Board {
 
 	public void setWriterId(String writerId) {
 		this.writerId = writerId;
+	}
+
+	public String getWriterNick() {
+		return writerNick;
+	}
+
+	public void setWriterNick(String writerNick) {
+		this.writerNick = writerNick;
 	}
 
 	public Date getWriteDate() {
@@ -108,5 +118,5 @@ public class Board {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+
 }

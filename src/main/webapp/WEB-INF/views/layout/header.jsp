@@ -119,7 +119,8 @@ li{list-style: none; }
 <body>
 
 
-<div claa="wrap">
+
+<div class="wrap">
 	<div class=" text-center mx-auto p-4" style="width: 1200px;" >
 		<a href="/"><img src="/resources/img/needit..png" width="500" height="100" ></a>
 		<div class="float-end">
@@ -130,7 +131,6 @@ li{list-style: none; }
 		</div>
 	</div>
 <header id="header" >
-	
 	
 	<div class="container ">
 		<nav class="nav justify-content-center">
@@ -178,10 +178,10 @@ li{list-style: none; }
                 
                 <li><a id="needitFont" style="font-size: 30px;">주변지도</a></li>
             </ul>
-            </nav>
-        </div>
-        <hr>
-        <div class="hd_bg"></div>
+          </nav>
+      </div>
+      <hr>
+      <div class="hd_bg"></div>
         
 	
 </header>

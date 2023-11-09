@@ -5,9 +5,10 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-	<!-- DB접속 정보 -->
+	 <!-- DB접속 정보 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<!-- 		<property name="url" value="jdbc:oracle:thin:@needit_medium?TNS_ADMIN=/home/ubuntu/OracleCloud/Wallet_Needit" /> -->
 		<property name="url" value="jdbc:oracle:thin:@needit_medium?TNS_ADMIN=C:/OracleCloud/Wallet_Needit" />
 		<property name="username" value="NEEDIT_PROJECT" />
 		<property name="password" value="Needit12341234" />
